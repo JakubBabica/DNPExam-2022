@@ -10,4 +10,10 @@
       <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DAOInterfaces" />
+      <Folder Include="Logic" />
+      <Folder Include="LogicInterfaces" />
+    </ItemGroup>
+
 </Project>
