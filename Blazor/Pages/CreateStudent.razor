@@ -1,0 +1,44 @@
+﻿@page "/CreateStudent"
+@using HttpClients.ClientInterfaces
+@using Domain.DTOs
+@inject IStudentService Service
+<h3>CreateStudent</h3>
+<div class="card">
+    <div class="field">
+        <label>Name</label>
+        <input type="text"@bind="Name"/>
+    </div>
+    <div class="field">
+        <label>Programme</label>
+        <input type="text"@bind="Programme"/>
+    </div>
+    <div class="field">
+        <label>studentId</label>
+        <input type="text"@bind="studentId"/>
+    </div>
+</div>
+<button @onclick="createStudent">add student</button>
+@code {
+    public string Name;
+    public string Programme;
+    public int studentId;
+    private string errorLabel;
+    
+    private async Task createStudent()
+    {
+        errorLabel = "";
+        try
+        {
+            await Service.CreateAsync(new NewStudentDTO(Name,Programme,studentId));
+            Name = "";
+            Programme = "";
+            studentId = 0;
+            errorLabel = "";
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            errorLabel = $"Error: {e.Message}";
+        }
+    }
+}

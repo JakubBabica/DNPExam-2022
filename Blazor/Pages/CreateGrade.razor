@@ -1,0 +1,85 @@
+﻿@page "/CreateGrade"
+@using HttpClients.ClientInterfaces
+@using Domain.Models
+@using Domain.DTOs
+@inject IGradeService gradeService;
+@inject IStudentService studentService;
+<h3>Create Grade</h3>
+<div class="card">
+    <div class="field">
+        <label>CourseCode</label>
+        <input type="text"@bind="CourseCode"/>
+    </div>
+    <div class="field">
+        <label>Grade</label>
+        <input type="text"@bind="Grade"/>
+    </div>
+    <div class="field">
+        <label>GradeId</label>
+        <input type="text"@bind="GradeId"/>
+    </div>
+    @if (students == null)
+    {
+        <span>Loading..</span>
+    }
+    else if (!students.Any())
+    {
+        <span>No teams to be found</span>
+    }
+    else
+    {
+        <div class="users-container">
+            <select  class="form-control" @bind="@studentId" >
+                <option>-- Select entry --</option>
+                @foreach (Student student in students)
+                {
+                    <option class="card" value="@student.studentId">
+                        <p style="border: 1px solid; padding: 5px" >@student.Name </p>
+                    </option>
+                }
+            </select>
+        </div>
+    }  
+</div>
+<button @onclick="createGrade">add grade</button>
+@code {
+    private string errorLabel;
+    private IEnumerable<Student> students;
+    public string CourseCode;
+    public int Grade;
+    public int GradeId;
+    public int studentId;
+    
+    private async Task createGrade()
+    {
+        errorLabel = "";
+        try
+        {
+            await gradeService.CreateAsync(new NewGradeDTO(CourseCode,Grade,GradeId,studentId));
+            CourseCode = "";
+            Grade = 0;
+            GradeId = 0;
+            studentId = 0;
+            errorLabel = "";
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            errorLabel = $"Error: {e.Message}";
+        }
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        errorLabel = "";
+        try
+        {
+            students = await studentService.GetAll();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            errorLabel = e.Message;
+        }
+    }
+}

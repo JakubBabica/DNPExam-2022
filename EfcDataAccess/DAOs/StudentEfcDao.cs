@@ -18,4 +18,11 @@ public class StudentEfcDao:IStudentDao
         await Context.SaveChangesAsync();
         return newStudent.Entity;
     }
+
+    public Task<IEnumerable<Student>> GetAsync()
+    {
+        IEnumerable<Student> students = Context.Students.AsEnumerable();
+        students = Context.Students;
+        return Task.FromResult(students);
+    }
 }

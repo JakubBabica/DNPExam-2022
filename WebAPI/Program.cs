@@ -17,6 +17,12 @@ builder.Services.AddScoped<IStudentDao, StudentEfcDao>();
 builder.Services.AddScoped<StudentInterface, StudentLogic>();
 builder.Services.AddScoped<IGradeDao, GradeEfcDao>();
 builder.Services.AddScoped<GradeInterface, GradeLogic>();
+builder.Services.AddScoped(sp=>new HttpClient
+    {
+        BaseAddress = new Uri("http://localhost:7145")
+    
+    }
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +31,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin
+    .AllowCredentials());
 
 app.UseHttpsRedirection();
 
@@ -33,8 +44,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-app.UseCors(x => x
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-    .SetIsOriginAllowed(origin => true) // allow any origin
-    .AllowCredentials());

@@ -25,4 +25,9 @@ public class StudentLogic:StudentInterface
         Student created = await StudentDao.createAsync(toCreate);
         return created;
     }
+
+    public Task<IEnumerable<Student>> GetAsync()
+    {
+        return StudentDao.GetAsync();
+    }
 }

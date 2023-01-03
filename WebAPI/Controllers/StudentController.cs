@@ -27,4 +27,18 @@ public class StudentController:ControllerBase
             return BadRequest(e.Message);
         }
     }
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Student>>> GetAsync()
+    {
+        try
+        {
+            IEnumerable<Student> students = await Logic.GetAsync();
+            return Ok(students);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
 }

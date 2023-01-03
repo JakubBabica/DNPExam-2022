@@ -10,4 +10,10 @@ public class NewStudentDTO
    
     public int studentId { get; set; }
     //public List<GradeInCourse> grades { get; set; }
+    public NewStudentDTO(string name, string programme, int studentId)
+    {
+        Name = name;
+        Programme = programme;
+        this.studentId = studentId;
+    }
 }
