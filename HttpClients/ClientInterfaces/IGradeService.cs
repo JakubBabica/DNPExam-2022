@@ -7,4 +7,5 @@ public interface IGradeService
 {
     public Task<GradeInCourse> CreateAsync(NewGradeDTO dto);
     Task<IEnumerable<GradeInCourse>> GetAll();
+    Task<ICollection<GradeInCourse>> Display(StatisticsOverviewDto dto);
 }

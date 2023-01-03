@@ -42,18 +42,20 @@ public class GradeController:ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-    // [HttpGet("{id:int}")]
-    // public async Task<ActionResult<GradeInCourse>> GetByIdAsync([FromRoute] int id)
-    // {
-    //     try
-    //     {
-    //         GradeInCourse grade = await Logic.GetByIdAsync(id);
-    //         return Ok(grade);
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Console.WriteLine(e);
-    //         return StatusCode(500, e.Message);
-    //     }
-    // }
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<GradeInCourse>>> GetAsync([FromQuery] string? courseCode,[FromQuery] int? totalNoOfPassed, [FromQuery] int? totalNoOfStudents,
+        [FromQuery] float? avrGradeOverall, [FromQuery]float? avrGradePassed, [FromQuery]int? medianGrade)
+    {
+        try
+        {
+            StatisticsOverviewDto parameters = new StatisticsOverviewDto(courseCode,totalNoOfPassed,totalNoOfStudents,avrGradeOverall,avrGradePassed,medianGrade);
+            var todos = await Logic.Details(parameters);
+            return Ok(todos);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
 }

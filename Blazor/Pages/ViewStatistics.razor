@@ -46,10 +46,7 @@ else
                 @dto.TotalNumOfStudents
             }
 
-            <input value="" type="checkbox">
-            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
-                &#x2717;
-            </label>
+            <input value="true" type="checkbox">
         </td>
 
         <td>
@@ -59,12 +56,9 @@ else
             }
             else
             {
-                @dto.TotalNumOfStudents
+                @dto.TotalNoOfPassed
             }
-            <input value="" type="checkbox">
-            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
-                &#x2717;
-            </label>
+            <input value="true" type="checkbox">
         </td>
 
         <td>
@@ -74,12 +68,9 @@ else
             }
             else
             {
-                @dto.TotalNumOfStudents
+                @dto.AvrGradeOverall
             }
-            <input value="" type="checkbox">
-            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
-                &#x2717;
-            </label>
+            <input value="true" type="checkbox">
         </td>
         <td>
             @if (dto == null)
@@ -88,26 +79,20 @@ else
             }
             else
             {
-                @dto.TotalNumOfStudents
+                @dto.AvrGradePassed
             }
-            <input value="" type="checkbox">
-            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
-                &#x2717;
-            </label>
+            <input value="true" type="checkbox">
         </td>
-        <td>
+        <td @bind="median">
             @if (dto == null)
             {
                 <span>Nothing to show..</span>
             }
             else
             {
-                @dto.TotalNumOfStudents
+                @dto.MedianGrade
             }
-            <input value="" type="checkbox">
-            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
-                &#x2717;
-            </label>
+            <input value="true" type="checkbox">
         </td>
     </tr>
 </table>
@@ -117,11 +102,11 @@ else
     private IEnumerable<GradeInCourse> grades;
     private string errorLabel;
     public int GradeId;
-    private int noOfAllStudents;
-    private int averageAll;
-    private int averagePassing;
-    private int noOfPassingStudents;
-    private int median;
+    private int? noOfAllStudents;
+    private int? averageAll;
+    private int? averagePassing;
+    private int? noOfPassingStudents;
+    private int? median;
     private StatisticsOverviewDto dto;
 
     protected override async Task OnInitializedAsync()
@@ -142,6 +127,7 @@ else
     {
         try
         {
+            gradeService.Display(dto);
         }
         catch (Exception e)
         {

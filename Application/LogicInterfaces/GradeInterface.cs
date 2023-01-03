@@ -7,5 +7,6 @@ public interface GradeInterface
 {
     Task<GradeInCourse> CreateAsync(NewGradeDTO dto);
     public Task<IEnumerable<GradeInCourse>> GetAsync();
+    Task<IEnumerable<GradeInCourse>> Details(StatisticsOverviewDto dto);
     
 }

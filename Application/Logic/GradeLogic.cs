@@ -31,4 +31,9 @@ public class GradeLogic:GradeInterface
     {
         return GradeDao.GetAsync();
     }
+
+    public Task<IEnumerable<GradeInCourse>> Details(StatisticsOverviewDto dto)
+    {
+        return GradeDao.Details(dto);
+    }
 }
