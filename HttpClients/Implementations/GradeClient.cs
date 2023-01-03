@@ -28,4 +28,18 @@ public class GradeClient:IGradeService
         })!;
         return grade;
     }
+
+    public async Task<IEnumerable<GradeInCourse>> GetAll()
+    {
+        HttpResponseMessage response = await client.GetAsync("https://localhost:7119/Grade");
+        string result = await response.Content.ReadAsStringAsync();
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception(result);
+        }
+        IEnumerable<GradeInCourse> grades= JsonSerializer.Deserialize<IEnumerable<GradeInCourse>>(result, new JsonSerializerOptions {
+            PropertyNameCaseInsensitive = true
+        })!;
+        return grades;
+    }
 }

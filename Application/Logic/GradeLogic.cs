@@ -26,4 +26,9 @@ public class GradeLogic:GradeInterface
         GradeInCourse created = await GradeDao.createAsync(toCreate);
         return created;
     }
+
+    public Task<IEnumerable<GradeInCourse>> GetAsync()
+    {
+        return GradeDao.GetAsync();
+    }
 }

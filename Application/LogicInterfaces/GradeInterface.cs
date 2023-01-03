@@ -6,4 +6,6 @@ namespace Application.LogicInterfaces;
 public interface GradeInterface
 {
     Task<GradeInCourse> CreateAsync(NewGradeDTO dto);
+    public Task<IEnumerable<GradeInCourse>> GetAsync();
+    
 }

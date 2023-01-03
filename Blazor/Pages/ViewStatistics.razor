@@ -1,6 +1,153 @@
 ﻿@page "/ViewStatistics"
+@using HttpClients.ClientInterfaces
+@using Domain.Models
+@using Domain.DTOs
+@inject IGradeService gradeService;
+@inject IStudentService studentService;
 <h3>ViewStatistics</h3>
+@if (grades == null)
+{
+    <span>Loading..</span>
+}
+else if (!grades.Any())
+{
+    <span>No grades to be found</span>
+}
+else
+{
+    <div class="users-container">
+        <select class="form-control" @bind="@GradeId">
+            <option>-- Select entry --</option>
+            @foreach (GradeInCourse grade in grades)
+            {
+                <option class="card" value="@grade.GradeId">
+                    <p style="border: 1px solid; padding: 5px">@grade.CourseCode </p>
+                </option>
+            }
+        </select>
+    </div>
+}
+<table>
+    <tr>
+        <th>Number of students in a course</th>
+        <th>Number of students with a passing grade</th>
+        <th>The average grade of all students</th>
+        <th>The average grade of passing students</th>
+        <th>The median grade of a course</th>
+    </tr>
+    <tr>
+        <td>
+            @if (dto == null)
+            {
+                <span>Nothing to show..</span>
+            }
+            else
+            {
+                @dto.TotalNumOfStudents
+            }
+
+            <input value="" type="checkbox">
+            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
+                &#x2717;
+            </label>
+        </td>
+
+        <td>
+            @if (dto == null)
+            {
+                <span>Nothing to show..</span>
+            }
+            else
+            {
+                @dto.TotalNumOfStudents
+            }
+            <input value="" type="checkbox">
+            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
+                &#x2717;
+            </label>
+        </td>
+
+        <td>
+            @if (dto == null)
+            {
+                <span>Nothing to show..</span>
+            }
+            else
+            {
+                @dto.TotalNumOfStudents
+            }
+            <input value="" type="checkbox">
+            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
+                &#x2717;
+            </label>
+        </td>
+        <td>
+            @if (dto == null)
+            {
+                <span>Nothing to show..</span>
+            }
+            else
+            {
+                @dto.TotalNumOfStudents
+            }
+            <input value="" type="checkbox">
+            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
+                &#x2717;
+            </label>
+        </td>
+        <td>
+            @if (dto == null)
+            {
+                <span>Nothing to show..</span>
+            }
+            else
+            {
+                @dto.TotalNumOfStudents
+            }
+            <input value="" type="checkbox">
+            <label @onclick="@(() => Fetch())" style="cursor:pointer; color: red; font-weight: bold">
+                &#x2717;
+            </label>
+        </td>
+    </tr>
+</table>
+<button @onclick="Fetch">fetch</button>
 
 @code {
-    
+    private IEnumerable<GradeInCourse> grades;
+    private string errorLabel;
+    public int GradeId;
+    private int noOfAllStudents;
+    private int averageAll;
+    private int averagePassing;
+    private int noOfPassingStudents;
+    private int median;
+    private StatisticsOverviewDto dto;
+
+    protected override async Task OnInitializedAsync()
+    {
+        errorLabel = "";
+        try
+        {
+            grades = await gradeService.GetAll();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            errorLabel = e.Message;
+        }
+    }
+
+    private async Task Fetch()
+    {
+        try
+        {
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 }

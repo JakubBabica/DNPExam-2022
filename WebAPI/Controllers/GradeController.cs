@@ -28,4 +28,32 @@ public class GradeController:ControllerBase
             return BadRequest(e.Message);
         }
     }
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<GradeInCourse>>> GetAsync()
+    {
+        try
+        {
+            IEnumerable<GradeInCourse> grades = await Logic.GetAsync();
+            return Ok(grades);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+    // [HttpGet("{id:int}")]
+    // public async Task<ActionResult<GradeInCourse>> GetByIdAsync([FromRoute] int id)
+    // {
+    //     try
+    //     {
+    //         GradeInCourse grade = await Logic.GetByIdAsync(id);
+    //         return Ok(grade);
+    //     }
+    //     catch (Exception e)
+    //     {
+    //         Console.WriteLine(e);
+    //         return StatusCode(500, e.Message);
+    //     }
+    // }
 }

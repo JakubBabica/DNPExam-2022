@@ -18,4 +18,11 @@ public class GradeEfcDao:IGradeDao
         await Context.SaveChangesAsync();
         return newGrade.Entity;
     }
+
+    public Task<IEnumerable<GradeInCourse>> GetAsync()
+    {
+        IEnumerable<GradeInCourse> grades = Context.Grades.AsEnumerable();
+        grades = Context.Grades;
+        return Task.FromResult(grades);
+    }
 }
