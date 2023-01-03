@@ -15,8 +15,4 @@
       <ProjectReference Include="..\EfcDataAccess\EfcDataAccess.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
 </Project>
