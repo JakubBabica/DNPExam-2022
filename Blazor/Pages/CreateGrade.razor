@@ -10,9 +10,31 @@
         <label>CourseCode</label>
         <input type="text"@bind="CourseCode"/>
     </div>
-    <div class="field">
-        <label>Grade</label>
-        <input type="text"@bind="Grade"/>
+    <div class="users-container">
+        <select class="form-control" @bind="@Grade">
+            <option>-- Select entry --</option>
+            <option class="card" value=12>
+                <p style="border: 1px solid; padding: 5px">12</p>
+            </option>
+            <option class="card" value=10>
+                <p style="border: 1px solid; padding: 5px">10</p>
+            </option>
+            <option class="card" value=7>
+                <p style="border: 1px solid; padding: 5px">7</p>
+            </option>
+            <option class="card" value=4>
+                <p style="border: 1px solid; padding: 5px">4</p>
+            </option>
+            <option class="card" value=2>
+                <p style="border: 1px solid; padding: 5px">2</p>
+            </option>
+            <option class="card" value=0>
+                <p style="border: 1px solid; padding: 5px">0</p>
+            </option>
+            <option class="card" value=-3>
+                <p style="border: 1px solid; padding: 5px">-3</p>
+            </option>
+        </select>
     </div>
     <div class="field">
         <label>GradeId</label>
@@ -29,19 +51,20 @@
     else
     {
         <div class="users-container">
-            <select  class="form-control" @bind="@studentId" >
+            <select class="form-control" @bind="@studentId">
                 <option>-- Select entry --</option>
                 @foreach (Student student in students)
                 {
                     <option class="card" value="@student.studentId">
-                        <p style="border: 1px solid; padding: 5px" >@student.Name </p>
+                        <p style="border: 1px solid; padding: 5px">@student.Name </p>
                     </option>
                 }
             </select>
         </div>
-    }  
+    }
 </div>
 <button @onclick="createGrade">add grade</button>
+
 @code {
     private string errorLabel;
     private IEnumerable<Student> students;
@@ -49,13 +72,13 @@
     public int Grade;
     public int GradeId;
     public int studentId;
-    
+
     private async Task createGrade()
     {
         errorLabel = "";
         try
         {
-            await gradeService.CreateAsync(new NewGradeDTO(CourseCode,Grade,GradeId,studentId));
+            await gradeService.CreateAsync(new NewGradeDTO(CourseCode, Grade, GradeId, studentId));
             CourseCode = "";
             Grade = 0;
             GradeId = 0;
@@ -68,7 +91,7 @@
             errorLabel = $"Error: {e.Message}";
         }
     }
-    
+
     protected override async Task OnInitializedAsync()
     {
         errorLabel = "";
@@ -82,4 +105,5 @@
             errorLabel = e.Message;
         }
     }
+
 }

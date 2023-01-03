@@ -7,19 +7,11 @@
     <projectFile profileName="WebAPI">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27856761-0fc5-4aa2-8fd3-e6f60deaa85c" name="Changes" comment="">
+    <list default="true" id="27856761-0fc5-4aa2-8fd3-e6f60deaa85c" name="Changes" comment="k">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Exam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Exam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DAOInterfaces/IGradeDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DAOInterfaces/IGradeDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Logic/GradeLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Logic/GradeLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/LogicInterfaces/GradeInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/LogicInterfaces/GradeInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blazor/Pages/ViewStatistics.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Pages/ViewStatistics.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EfcDataAccess/DAOs/GradeEfcDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EfcDataAccess/DAOs/GradeEfcDao.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blazor/Pages/CreateGrade.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Blazor/Pages/CreateGrade.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EfcDataAccess/ExamDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/EfcDataAccess/ExamDatabase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EfcDataAccess/ExamDatabase.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/EfcDataAccess/ExamDatabase.db-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EfcDataAccess/ExamDatabase.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/EfcDataAccess/ExamDatabase.db-wal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpClients/ClientInterfaces/IGradeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HttpClients/ClientInterfaces/IGradeService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpClients/Implementations/GradeClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HttpClients/Implementations/GradeClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GradeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GradeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Properties/launchSettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +117,7 @@
       <workItem from="1672673059949" duration="523000" />
       <workItem from="1672693867155" duration="859000" />
       <workItem from="1672695299148" duration="1695000" />
-      <workItem from="1672732791638" duration="7754000" />
+      <workItem from="1672732791638" duration="8464000" />
     </task>
     <task id="LOCAL-00001" summary="1st">
       <created>1672694065550</created>
@@ -162,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672738018317</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="k">
+      <created>1672740839770</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672740839770</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +187,7 @@
     <MESSAGE value="3rd" />
     <MESSAGE value="backup" />
     <MESSAGE value="save progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="save progress" />
+    <MESSAGE value="k" />
+    <option name="LAST_COMMIT_MESSAGE" value="k" />
   </component>
 </project>
