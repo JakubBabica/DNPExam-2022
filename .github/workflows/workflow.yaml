@@ -35,11 +35,10 @@ jobs:
     
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-  #Upload the jar artifact 
-    - name: Upload JAR Artifact
-  #This uploads artifacts from your workflow 
-      uses: actions/upload-artifact@v3
+
+    - name: Publish artifact
+      uses: actions/upload-artifact@v2
       with:
-        #Set artifact name
-        name: RunnableJar
-        #From this pathpath: staging
+       name: build-and-test
+       path: bin/Release/net6.0/
+    
