@@ -36,6 +36,9 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
 
+    - name: List contents of bin/Release directory
+      run: ls -R bin/Release
+      
     - name: Publish artifact
       uses: actions/upload-artifact@v2
       with:
